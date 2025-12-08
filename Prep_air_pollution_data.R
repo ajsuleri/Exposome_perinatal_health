@@ -13,7 +13,7 @@ libraries <- c('foreign', 'haven', 'dplyr', 'readr')
 invisible(lapply(libraries, require, character.only = T))
 
 # Set working directory
-setwd("/Users/ajsuleri/Desktop/Administratie/Postdoc/Externe data exposoom project/Air pollution data/Data")
+setwd("set_path")
 
 ### Load air pollution data for Rotterdam Rijnmond from 2015 to 2021 
 # Elemental carbon 
@@ -58,6 +58,7 @@ pop_nrs$Year <- pop_nrs$year
 
 ### Merge files
 air_pollution_data <- rbind(EC_data, PM2.5_data, AQ_data)
+save(air_pollution_data, air_pollution_data, file="raw_air_pollution_data.RData")
 
 # Check structure and fix if needed 
 str(air_pollution_data)
@@ -84,7 +85,7 @@ air_pollution_data_bins <- air_pollution_data %>% mutate(avg_PM2.5_bin = cut(avg
 air_pollution_data_bins <- air_pollution_data %>% mutate(avg_EC_bin = cut(avg_EC, breaks = quantile(avg_EC, probs = seq(0, 1, 0.25), na.rm = T), labels = c("Q1", "Q2", "Q3", "Q4"), include.lowest = TRUE))
 
 ### Save total dataframe
-setwd("/Users/ajsuleri/Desktop/Administratie/Postdoc/Externe data exposoom project/Air pollution data")
+setwd("set_path")
 save(pop_nrs, pop_nrs, file="population_per_postal_code.RData")
 save(air_pollution_data_bins, air_pollution_data_bins, file="air_pollution_data_bins.RData")
 # Contains vars: date (yymmdd), 6 digit postal code, 4 digit postal code, daily value for O3, PM10, NO2, PM2.5, EC, and bins per quartile for each air pollution value
