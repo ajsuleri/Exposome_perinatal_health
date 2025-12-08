@@ -14,7 +14,7 @@ libraries <- c('foreign', 'haven', 'dplyr')
 invisible(lapply(libraries, require, character.only = T))
 
 # Set working directory
-setwd("/Users/ajsuleri/Desktop/Administratie/Postdoc/Externe data exposoom project/Temperature data")
+setwd("set_path")
 
 # Download data 2015-2021, select all monitors and var 'TG' at https://daggegevens.knmi.nl/klimatologie/daggegevens (openly available)
 # Selected variable, X = TG: Etmaalgemiddelde temperatuur (in 0.1 graden Celsius)
