@@ -96,6 +96,6 @@ weather_data_bins <- weather_data %>% mutate(temp_bin = cut(avg_temp, breaks = c
 hist(weather_data_bins$avg_temp) # normally distributed 
 
 ### Step 3: save final files
-save(weather_data_bins, weather_data_bins,file="~weather_data_.RData")
+save(weather_data_bins, weather_data_bins, file="~weather_data_.RData")
 
 #\ End of script
