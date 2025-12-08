@@ -93,7 +93,7 @@ NumRecords_w <- weather_data %>% group_by(station) %>% summarise(NumRecords= sum
 weather_data_bins <- weather_data %>% mutate(temp_bin = cut(avg_temp, breaks = c(-Inf, -4, 0, 4, 8, 12, 16, 20, Inf), labels = c("< -4", "-4 to 0", "0 to 4", "4 to 8", "8 to 12", "12 to 16", "16 to 20", "> 20"), right = TRUE, include.lowest = TRUE))
 
 # Check distribution temperature 
-hist(weather_data_bins$avg_temp) # Normally distributd 
+hist(weather_data_bins$avg_temp) # normally distributed 
 
 ### Step 3: save final files
 save(weather_data_bins, weather_data_bins,file="~weather_data_.RData")
