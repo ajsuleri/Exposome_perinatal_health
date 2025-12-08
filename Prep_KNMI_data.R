@@ -98,4 +98,6 @@ hist(weather_data_bins$avg_temp) # normally distributed
 ### Step 3: save final files
 save(weather_data_bins, weather_data_bins, file="~weather_data_.RData")
 
+# This df contains the following vars: station = KNMI weather monitor station, date = date (yymmdd), avg.temperature = average daily temperature, temp_bin = the cut-off in which the specific temperature lines. 
+
 #\ End of script
