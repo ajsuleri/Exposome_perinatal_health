@@ -57,8 +57,8 @@ pop_nrs <- read.csv("Pop_Nrs.csv", header = T, stringsAsFactors = F, check.names
 pop_nrs$Year <- pop_nrs$year
 
 ### Merge files
-air_pollution_merged <- merge(EC_data, PM2.5_data, by = 'date', all.x = T)
-air_pollution_data <- merge(air_pollution_merged, AQ_data, by = 'date', all.x = T)
+air_pollution_merged <- merge(EC_data, PM2.5_data, by = c('date', 'postcode'), all.x = T)
+air_pollution_data <- merge(air_pollution_merged, AQ_data, by = c('date', 'postcode'), all.x = T)
 
 save(air_pollution_data, air_pollution_data, file="raw_air_pollution_data.RData")
 
