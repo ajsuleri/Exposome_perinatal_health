@@ -4,6 +4,8 @@
 
 # Goal of this script is to clean the 'temperature' variable for downstream analyses. 
 
+# ============================================================ # 
+
 ### Step 1: load monitors for each year (2015 until 2021) and clean data 
 rm(list = ls()) # clears the environment
 set.seed(2025) # set seed
@@ -87,12 +89,16 @@ weather_data <- rbind(monitor_2015, monitor_2016, monitor_2017, monitor_2018, mo
 # Number of records per weather station for 2015 to 2021
 NumRecords_w <- weather_data %>% group_by(station) %>% summarise(NumRecords= sum(station==station))
 
+# ============================================================ # 
+
 ### Step 2: Create bins 
 # Create the following bins to ensure comparability to prior studies: < -4 °C, -4 – 0 °C, 0 – 4 °C, 4 – 8 °C, 8 – 12 °C, 12 – 16 °C, 16 – 20 °C, and > 20 °C
 weather_data_bins <- weather_data %>% mutate(temp_bin = cut(avg_temp, breaks = c(-Inf, -4, 0, 4, 8, 12, 16, 20, Inf), labels = c("< -4", "-4 to 0", "0 to 4", "4 to 8", "8 to 12", "12 to 16", "16 to 20", "> 20"), right = TRUE, include.lowest = TRUE))
 
 # Check distribution temperature 
 hist(weather_data_bins$avg_temp) # normally distributed 
+
+# ============================================================ # 
 
 ### Step 3: save final files
 save(weather_data_bins, weather_data_bins, file="weather_data.RData")
